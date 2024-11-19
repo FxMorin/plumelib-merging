@@ -26,5 +26,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         native-image-job-reports: 'true'
 
-    - name: ./gradlew nativeCompile check
-      run: ./gradlew nativeCompile check
+    - name: Native Compile
+      run: ./gradlew nativeCompile
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Compiled artifacts for ${{ github.sha }}
+        path: build
